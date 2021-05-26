@@ -13,7 +13,7 @@ html, body {
 } 
 .background {
     background-color: white;
-    background-image: url('http://localhost:3000/road.png');
+    background-image: url("/road.png");
     background-size: auto 100%;
     background-repeat: no-repeat;
     background-position: right top;
