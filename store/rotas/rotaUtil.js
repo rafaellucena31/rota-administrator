@@ -54,7 +54,7 @@ function RotasLeftJoinUserByData(rotasData, userselected, usersData, dataSelecte
             for (let j=0; j< rotasDataCopy.rota.length; j++) {
                     let rotaItem = rotasDataCopy.rota[j]
                     debugger
-                    if (rotaItem.date == dataSelected && CanAddRota(userselected, rotaItem.userId)){
+                    if (rotaItem.date == dataSelected){
                         rotaItem.user = GetNameUser(usersData, rotaItem.userId)
                         rotaItem.period = rotasDataCopy.period
                         rotaItem.fatherRotaId = rotasDataCopy.rotaID

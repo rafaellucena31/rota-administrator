@@ -2,9 +2,10 @@
 
 ## Steps to Run
 
-1. Clone the project
-2. npm install
-3. npm run dev
+1. Clone the project git clone https://github.com/rafaellucena31/rota-administrator.git
+2. cd rota-administrator
+3. npm install
+4. npm run dev
 
 ## Build Setup
 

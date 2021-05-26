@@ -44,8 +44,14 @@ export default {
                 rotaServicesObject.getRota(response.data.rotaId).then(res => {
                     commit('addRota', res.data)
                     let totalAdded = getters['getField']('totalGenerated')
+                    let userselected = getters['getField']('userselected')
                     if(totalAdded > 0){
-                        dispatch('success', `success, ${totalAdded} Added`)
+                        if (userselected == undefined){
+                            dispatch('success', `success, ${totalAdded} Added`)
+                        }
+                        else{
+                            dispatch('success', `success, ${totalAdded} Added. Filter User Ignored (Usability)`)
+                        }
                     } else{
                         dispatch('success',  `success, but ${totalAdded} Added`)
                     }
