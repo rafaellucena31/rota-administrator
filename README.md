@@ -7,6 +7,7 @@
 3. npm install
 4. npm run dev
 
+Link to project online: https://rota-administrator.herokuapp.com/login
 ## Build Setup
 
 ```bash
