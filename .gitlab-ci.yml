@@ -1,0 +1,30 @@
+variables:
+  AWS_DEFAULT_REGION: ${AWS_REGION_ROTA_ADMINISTRATOR}
+  APP_NAME: sparota
+  APP_IMAGE_PATH: $DOCKER_REGISTRY_ROTA_ADMINISTRATOR/$AWS_PROJECT_ROTA_ADMINISTRATOR/$APP_NAME
+  NODE_ENV: aws
+
+stages: 
+  - build
+  - deploy
+  
+build-job:
+  tags: 
+    - shell
+  stage: build
+  script:
+    - docker build --build-arg VAR_URL_BASE_ROTA=$VAR_URL_BASE_ROTA --build-arg VAR_URL_BASE_AUTH=$VAR_URL_BASE_AUTH --build-arg VAR_PATH_AUTHORIZATION=$VAR_PATH_AUTHORIZATION --build-arg VAR_PATH_AUTHENTICATION=$VAR_PATH_AUTHENTICATION -t $APP_IMAGE_PATH:latest .
+  only:
+    - master
+
+deploy-job:
+  tags: 
+    - shell
+  stage: deploy
+  script:
+    - aws ecr get-login-password | docker login --username AWS --password-stdin $DOCKER_REGISTRY_ROTA_ADMINISTRATOR
+    - docker push $APP_IMAGE_PATH:latest
+  after_script: 
+    - aws ecs update-service --cluster $CLUSTER_NAME_ROTA_ADMINISTRATOR --service Frontend --force-new-deployment
+  only:
+    - master

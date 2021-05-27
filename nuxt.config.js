@@ -37,6 +37,7 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/vuetify
+    // yml NODE_ENV=cicd ;)
     '@nuxtjs/vuetify',
     ['@nuxtjs/dotenv', { filename: '.env.'+process.env.NODE_ENV }]
   ],
