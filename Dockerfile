@@ -6,7 +6,7 @@ COPY . .
 RUN npm install
 
 # Will be done by ci/cd -> NODE_ENV: aws
-ENV NODE_ENV aws
+# ENV NODE_ENV aws
 
 ARG VAR_URL_BASE_ROTA='https://clava.io/api'
 ARG VAR_URL_BASE_AUTH='https://api.auth.io'
